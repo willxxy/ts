@@ -1,2 +1,6 @@
-# ts
-Time Series Analysis
+# Time Series Analysis
+
+
+## A study on time series analysis
+
+
