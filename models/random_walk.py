@@ -1,5 +1,5 @@
 import random
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 import matplotlib.pyplot as plt
 import argparse
 import pandas as pd
@@ -70,7 +70,9 @@ def main(args):
     plt.savefig(f"./pngs/model_outputs/random_walk_{args.ratio}_{args.features}_{args.dataset.split('/')[-1].split('.')[0]}.png")
 
     mse = mean_squared_error(test_data[sampled_feature], predictions)
+    mae = mean_absolute_error(test_data[sampled_feature], predictions)
     print('Mean Squared Error:', mse)
+    print('Mean Absolute Error:', mae)
     print('--------------------------------------------------')
 
 if __name__ == '__main__':
