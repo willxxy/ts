@@ -68,7 +68,8 @@ def main(args):
     plt.legend()
     plt.grid(True)
     plt.savefig(f"./pngs/model_outputs/random_walk_{args.ratio}_{args.features}_{args.dataset.split('/')[-1].split('.')[0]}.png")
-
+    plt.close()
+    
     mse = mean_squared_error(test_data[sampled_feature], predictions)
     mae = mean_absolute_error(test_data[sampled_feature], predictions)
     print('Mean Squared Error:', mse)
