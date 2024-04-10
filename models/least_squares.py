@@ -42,8 +42,6 @@ def main(args):
         print(column_names)
 
     # Convert dates to a numerical format (e.g., number of days since the start of the dataset)
-
-    # Defining independent variable (t) and dependent variable ('% WEIGHTED ILI')
     train_X = train_data['t'].values.reshape(-1, 1)
     train_y = train_data[selected_features[0]].values
 
