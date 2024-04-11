@@ -21,3 +21,6 @@ python ./models/random_walk.py --ratio=0.8 --dataset=ETT-small/ETTm1.csv --featu
 
 python ./models/random_walk.py --ratio=0.8 --dataset=ETT-small/ETTm2.csv --features=1
 python ./models/random_walk.py --ratio=0.8 --dataset=ETT-small/ETTm2.csv --features=4
+
+python ./models/random_walk.py --ratio=0.8 --dataset=electrograms/electrograms_norm.csv --features=1
+python ./models/random_walk.py --ratio=0.8 --dataset=electrograms/electrograms_afib.csv --features=4

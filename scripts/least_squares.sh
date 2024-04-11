@@ -13,4 +13,3 @@ python ./models/least_squares.py --ratio=0.8 --dataset=ETT-small/ETTh2.csv
 python ./models/least_squares.py --ratio=0.8 --dataset=ETT-small/ETTm1.csv
 
 python ./models/least_squares.py --ratio=0.8 --dataset=ETT-small/ETTm2.csv
-

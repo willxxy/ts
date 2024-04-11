@@ -20,14 +20,14 @@ def visualize_data(data_path, features = None):
     print(df.head())
     print('Length of the dataset:', len(df))
 
-    df['date'] = pd.to_datetime(df['date'])
-    df.set_index('date', inplace=True)
+    df[column_names[0]] = pd.to_datetime(df[column_names[0]])
+    df.set_index(column_names[0], inplace=True)
 
     df[features].plot(figsize=(10, 5))
     plt.title('Time Series Plot')
-    plt.xlabel('Date')
+    plt.xlabel('Time')
     plt.ylabel('Value')
-    plt.savefig(f"./pngs/time_series_plot_{args.dataset.split('/')[-1].split('.')[0]}.png")
+    plt.savefig(f"./pngs/data_analysis/time_series_plot_{args.dataset.split('/')[-1].split('.')[0]}.png")
 
 def main(args):
     data_path = os.path.join('./data/all_six_datasets/', args.dataset)
