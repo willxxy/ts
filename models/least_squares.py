@@ -22,13 +22,16 @@ def main(args):
     data_path = os.path.join('./data/all_six_datasets/', args.dataset)
     df = pd.read_csv(data_path)
     column_names = df.columns.tolist() # Exclude the date column
-    df[column_names[0]] = pd.to_datetime(df[column_names[0]])
-    df.sort_values(column_names[0], inplace=True)
+    
+    if 'electrograms' in args.dataset:
+        df['t'] = df[column_names[0]]
+    else:
+        df[column_names[0]] = pd.to_datetime(df[column_names[0]])
+        df.sort_values(column_names[0], inplace=True)
+        df['t'] = (df[column_names[0]] - df[column_names[0]].min()).dt.days
+    
     selected_features = random.sample(column_names[1:], 1)
     
-    df[column_names[0]] = pd.to_datetime(df[column_names[0]])
-    df['t'] = (df[column_names[0]] - df[column_names[0]].min()).dt.days
-
     train_ratio = args.ratio
     split_index = int(len(df) * train_ratio)
     if args.ratio==0:
@@ -43,12 +46,13 @@ def main(args):
 
     # Convert dates to a numerical format (e.g., number of days since the start of the dataset)
     train_X = train_data['t'].values.reshape(-1, 1)
+    test_X = test_data['t'].values.reshape(-1, 1)
+
     train_y = train_data[selected_features[0]].values
 
-    test_X = test_data['t'].values.reshape(-1, 1)
     test_y = test_data[selected_features[0]].values
 
-    # Applying a polynomial transformation for quadratic fit (degree = 2)
+    # Applying a polynomial transformation for quadratic fit (degree = 2)'
     poly = PolynomialFeatures(degree=2)
     train_X_poly = poly.fit_transform(train_X)
     test_X_poly = poly.fit_transform(test_X)
