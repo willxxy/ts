@@ -162,4 +162,5 @@ cython_debug/
 pngs/
 data/
 ._DS_Store
+.DS_Store
 test.py
