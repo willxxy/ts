@@ -161,3 +161,4 @@ cython_debug/
 
 pngs/
 data/
+._DS_Store
